@@ -1,5 +1,5 @@
 // Network-first Service Worker: новые версии появляются без ручного обновления.
-const CACHE='korea-path-v10';
+const CACHE='korea-path-v11';
 const CORE=['./','./index.html','./css/style.css','./js/data.js','./js/calculator.js','./js/map.js','./js/app.js','./js/background.js','./assets/icons/logo.svg'];
 self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)))});
 self.addEventListener('activate',event=>event.waitUntil((async()=>{
