@@ -158,3 +158,27 @@ body::after{content:"";position:fixed;inset:0;z-index:999;pointer-events:none;ba
 html[data-theme=dark] .back-to-top{box-shadow:0 16px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.12)}html[data-theme=dark] .progress-track{stroke:rgba(247,241,232,.15)}html[data-theme=dark] .progress-ring{stroke:#d8c1af}
 @media(max-width:620px){.back-to-top{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));width:52px;height:52px}}
 @media(prefers-reduced-motion:reduce){.back-to-top{transition:none}.progress-ring{transition:none}}
+
+/* ===== Extra-light Milk Glass ===== */
+html[data-theme=light]{
+  color-scheme:light;
+  --bg:#fffdf9;--surface:rgba(255,255,255,.82);--surface2:rgba(246,239,231,.66);
+  --text:#342b26;--muted:#71645c;--line:rgba(101,77,64,.1);
+  --glass:rgba(255,255,255,.78);--glass-strong:rgba(255,255,255,.95);
+  --glass-edge:rgba(255,255,255,1);--glass-shine:#fff;
+  --shadow:0 20px 55px rgba(91,69,56,.085),0 4px 14px rgba(91,69,56,.045),inset 0 1px 0 #fff
+}
+html[data-theme=light] body{background:
+  radial-gradient(920px 650px at 82% -6%,rgba(231,218,207,.34),transparent 69%),
+  radial-gradient(740px 590px at -8% 35%,rgba(211,188,172,.09),transparent 73%),
+  radial-gradient(800px 660px at 102% 74%,rgba(255,255,255,.98),transparent 75%),#fffdf9}
+html[data-theme=light] body::before{opacity:.38}
+html[data-theme=light] .header-inner{background:rgba(255,255,255,.92);box-shadow:0 14px 38px rgba(91,69,56,.075),inset 0 1px 0 #fff}
+html[data-theme=light] .hero-panel,html[data-theme=light] .feature-card,html[data-theme=light] .panel,html[data-theme=light] .filter-bar,html[data-theme=light] .table-wrap,html[data-theme=light] .city-card,html[data-theme=light] .map-side,html[data-theme=light] .faq article{background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,255,255,.68)),var(--glass);border-color:rgba(255,255,255,.98)}
+html[data-theme=light] .route-card{background:rgba(255,255,255,.7);border-color:rgba(118,91,76,.08)}
+html[data-theme=light] .alt{background:linear-gradient(180deg,transparent,rgba(232,220,208,.08) 18%,rgba(232,220,208,.08) 82%,transparent)}
+html[data-theme=light] .search,html[data-theme=light] .icon-btn,html[data-theme=light] .btn,html[data-theme=light] .share-btn{background:rgba(255,255,255,.66)}
+html[data-theme=light] footer{background:rgba(244,237,229,.78);color:var(--text);border-color:rgba(101,77,64,.1)}
+html[data-theme=light] .footer-grid p,html[data-theme=light] .copyright{color:var(--muted)}html[data-theme=light] .emergency a,html[data-theme=light] .copyright{border-color:rgba(101,77,64,.12)}
+html[data-theme=light] .back-to-top{background:rgba(255,255,255,.94);box-shadow:0 14px 36px rgba(91,69,56,.12),inset 0 1px 0 #fff}
+html[data-theme=light] .btn.primary{background:linear-gradient(135deg,#ad8a76,#806151);color:#fff;border-color:rgba(255,255,255,.62);box-shadow:0 12px 26px rgba(104,77,63,.18),inset 0 1px 0 rgba(255,255,255,.35)}
