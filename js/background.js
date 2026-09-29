@@ -11,21 +11,21 @@
     states:{
       'default-state':{
         gradients:[
-          ['#fffaf6','#f2c8ae'],
-          ['#fffdf9','#efbfa3'],
-          ['#f8dfcf','#fff8f3'],
-          ['#fff7f1','#eeb99b']
+          ['#fff8f1','#e99f77'],
+          ['#f0b38f','#fffaf4'],
+          ['#fff0e4','#d9825b'],
+          ['#e7a27d','#ffe3d1']
         ],
-        transitionSpeed:8000
+        transitionSpeed:5600
       },
       'dark-state':{
         gradients:[
-          ['#241510','#4a2a20'],
-          ['#2c1a14','#663927'],
-          ['#1e130f','#523024'],
-          ['#301c15','#71422f']
+          ['#170b08','#75402d'],
+          ['#3a1d15','#a65f43'],
+          ['#21100c','#643523'],
+          ['#4a251a','#8f4e36']
         ],
-        transitionSpeed:9000
+        transitionSpeed:6200
       }
     }
   });
