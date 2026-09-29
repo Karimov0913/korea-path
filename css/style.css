@@ -145,3 +145,16 @@ body::after{content:"";position:fixed;inset:0;z-index:999;pointer-events:none;ba
 @keyframes buttonShine{0%,68%{transform:translateX(-72%)}88%,100%{transform:translateX(72%)}}
 @media(max-width:900px){.hero-panel,.tilt-card{transform:none!important}.hero-panel{animation:glassFloat 7s ease-in-out infinite}.hero-panel .route-top,.hero-panel .route-card,.hero-panel .stats{transform:none}}
 @media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.hero-panel,.btn.primary::after{animation:none!important}.hero-panel,.tilt-card{transform:none!important;translate:0!important}}
+
+/* Контраст halal-карточки: класс не должен наследовать цвет маркера легенды. */
+.panel.halal{background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018)),var(--glass);color:var(--text)}
+.panel.halal p,.panel.halal small{color:var(--muted)}
+.legend .mosque,.legend .hospital{background:#8b6f60}.legend .halal,.legend .bank,.legend .uni{background:#d8c1af}
+
+/* Плавающая кнопка наверх с круговым прогрессом чтения. */
+.back-to-top{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));z-index:650;width:58px;height:58px;padding:0;border:0;border-radius:50%;color:var(--text);background:var(--glass-strong);box-shadow:0 16px 40px rgba(73,52,42,.18),inset 0 1px 0 rgba(255,255,255,.9);backdrop-filter:blur(18px) saturate(145%);-webkit-backdrop-filter:blur(18px) saturate(145%);cursor:pointer;opacity:0;visibility:hidden;translate:0 14px;scale:.92;transition:opacity .3s ease,translate .35s cubic-bezier(.2,.8,.2,1),scale .35s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
+.back-to-top.visible{opacity:1;visibility:visible;translate:0 0;scale:1}.back-to-top:hover{translate:0 -4px;scale:1.05;box-shadow:0 22px 50px rgba(73,52,42,.24),inset 0 1px 0 #fff}.back-to-top svg{display:block;width:100%;height:100%;overflow:visible;transform:rotate(-90deg)}
+.progress-track,.progress-ring{fill:none;stroke-width:2}.progress-track{stroke:rgba(139,111,96,.16)}.progress-ring{stroke:#8b6f60;stroke-linecap:round;stroke-dasharray:150.8;stroke-dashoffset:150.8;transition:stroke-dashoffset .12s linear}.up-arrow{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transform:rotate(90deg);transform-origin:28px 28px}
+html[data-theme=dark] .back-to-top{box-shadow:0 16px 40px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.12)}html[data-theme=dark] .progress-track{stroke:rgba(247,241,232,.15)}html[data-theme=dark] .progress-ring{stroke:#d8c1af}
+@media(max-width:620px){.back-to-top{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));width:52px;height:52px}}
+@media(prefers-reduced-motion:reduce){.back-to-top{transition:none}.progress-ring{transition:none}}
