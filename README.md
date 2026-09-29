@@ -3,7 +3,7 @@
 **Student Relocation Assistant for Uzbekistan → South Korea.**  
 **Интерактивный помощник для студентов из Узбекистана, переезжающих на учёбу в Южную Корею.**
 
-![Korea Path screenshot](assets/screenshot.png)
+![Korea Path screenshot](assets/screenshot.svg)
 
 ## Features / Возможности
 
