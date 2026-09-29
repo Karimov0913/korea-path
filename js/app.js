@@ -36,5 +36,10 @@
       card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');card.style.setProperty('--mx','50%');card.style.setProperty('--my','30%')});
     });
   }
+  const backToTop=$('#backToTop'),scrollRing=$('#scrollProgress'),ringLength=150.8;
+  const updateScrollProgress=()=>{const max=document.documentElement.scrollHeight-innerHeight,progress=max>0?Math.min(scrollY/max,1):0;scrollRing.style.strokeDashoffset=String(ringLength*(1-progress));backToTop.classList.toggle('visible',scrollY>420)};
+  addEventListener('scroll',updateScrollProgress,{passive:true});
+  backToTop.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'}));
+  updateScrollProgress();
   if('serviceWorker' in navigator&&location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();
