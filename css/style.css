@@ -233,3 +233,19 @@ footer .footer-grid p,footer .copyright{color:var(--muted)}footer .emergency a{b
 @keyframes canvasBreath{0%{transform:scale(1.06) translate3d(-1.5%,-1%,0)}50%{transform:scale(1.13) translate3d(2%,1.5%,0)}100%{transform:scale(1.08) translate3d(-1%,2%,0)}}
 @media(max-width:620px){#granim-bg{opacity:.88;animation-duration:20s}}
 @media(prefers-reduced-motion:reduce){#granim-bg{animation:none;transform:none}}
+
+/* ===== Travelling liquid blobs =====
+   Крупные стеклянные формы действительно перемещаются по всему экрану. */
+#granim-bg{opacity:.66;filter:saturate(.76) brightness(1.04)}html[data-theme=dark] #granim-bg{opacity:.72;filter:saturate(.7) brightness(.68)}
+.ambient-float{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;contain:strict}
+.ambient-blob{position:absolute;display:block;width:clamp(260px,30vw,520px);aspect-ratio:1;border:1px solid rgba(255,255,255,.5);background:radial-gradient(circle at 30% 24%,rgba(255,255,255,.54),rgba(243,199,166,.24) 38%,rgba(201,130,98,.14) 66%,transparent 76%);box-shadow:inset 30px 24px 70px rgba(255,255,255,.2),0 35px 90px rgba(145,88,63,.12);filter:blur(.3px);opacity:.58;will-change:transform,border-radius}
+.blob-a{left:-12vw;top:4vh;border-radius:43% 57% 62% 38%/45% 36% 64% 55%;animation:blobTravelA 24s cubic-bezier(.45,.05,.55,.95) infinite alternate,blobMorph 9s ease-in-out infinite alternate}
+.blob-b{right:-14vw;top:38vh;width:clamp(320px,36vw,620px);border-radius:58% 42% 36% 64%/38% 55% 45% 62%;opacity:.43;animation:blobTravelB 31s cubic-bezier(.45,.05,.55,.95) infinite alternate-reverse,blobMorph 12s ease-in-out infinite alternate-reverse}
+.blob-c{left:28vw;bottom:-32vh;width:clamp(240px,26vw,450px);border-radius:50%;opacity:.34;animation:blobTravelC 27s ease-in-out infinite alternate,blobMorph 10s ease-in-out infinite alternate}
+html[data-theme=dark] .ambient-blob{background:radial-gradient(circle at 30% 24%,rgba(255,219,194,.28),rgba(201,130,98,.22) 38%,rgba(143,78,54,.2) 65%,transparent 76%);border-color:rgba(255,226,207,.18);box-shadow:inset 30px 24px 70px rgba(255,214,187,.08),0 35px 100px rgba(0,0,0,.16);opacity:.48}
+@keyframes blobTravelA{0%{transform:translate3d(0,0,0) rotate(0deg) scale(.9)}28%{transform:translate3d(42vw,16vh,0) rotate(42deg) scale(1.12)}62%{transform:translate3d(78vw,48vh,0) rotate(105deg) scale(.94)}100%{transform:translate3d(24vw,77vh,0) rotate(175deg) scale(1.08)}}
+@keyframes blobTravelB{0%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}35%{transform:translate3d(-54vw,-28vh,0) rotate(-58deg) scale(.88)}70%{transform:translate3d(-86vw,28vh,0) rotate(-122deg) scale(1.1)}100%{transform:translate3d(-32vw,48vh,0) rotate(-190deg) scale(.93)}}
+@keyframes blobTravelC{0%{transform:translate3d(0,0,0) scale(.82)}45%{transform:translate3d(48vw,-66vh,0) scale(1.08)}100%{transform:translate3d(-22vw,-94vh,0) scale(.96)}}
+@keyframes blobMorph{0%{border-radius:43% 57% 62% 38%/45% 36% 64% 55%}50%{border-radius:64% 36% 44% 56%/56% 62% 38% 44%}100%{border-radius:38% 62% 55% 45%/64% 43% 57% 36%}}
+@media(max-width:620px){.ambient-blob{width:260px;opacity:.42}.blob-b{width:310px}.blob-c{width:220px}.blob-a{animation-duration:29s}.blob-b{animation-duration:36s}.blob-c{animation-duration:32s}}
+@media(prefers-reduced-motion:reduce){.ambient-blob{animation:none!important}.blob-a{transform:translate3d(12vw,18vh,0)}.blob-b{transform:translate3d(-18vw,12vh,0)}.blob-c{transform:translate3d(8vw,-32vh,0)}}
