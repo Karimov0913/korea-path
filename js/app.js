@@ -25,5 +25,16 @@
   $('#siteSearch').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();$$('main section').forEach(s=>{s.hidden=!!q&&!s.textContent.toLowerCase().includes(q)});$('#searchEmpty').hidden=!q||$$('main section:not([hidden])').length>0});
   $$('.faq-question').forEach(b=>b.onclick=()=>{const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));b.nextElementSibling.hidden=open});
   const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('visible')),{threshold:.08});$$('.reveal').forEach(e=>io.observe(e));
+  // Лёгкий 3D-параллакс: работает только с точным указателем, без нагрузки на touch-устройства.
+  const canTilt=matchMedia('(hover:hover) and (pointer:fine)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(canTilt){
+    let frame=0;
+    addEventListener('pointermove',e=>{if(frame)return;frame=requestAnimationFrame(()=>{document.body.style.setProperty('--cursor-x',e.clientX+'px');document.body.style.setProperty('--cursor-y',e.clientY+'px');frame=0})},{passive:true});
+    $$('.hero-panel,.feature-card,.panel,.city-card').forEach(card=>{
+      card.classList.add('tilt-card');
+      card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.setProperty('--ry',((x-.5)*7).toFixed(2)+'deg');card.style.setProperty('--rx',((.5-y)*6).toFixed(2)+'deg');card.style.setProperty('--mx',(x*100).toFixed(1)+'%');card.style.setProperty('--my',(y*100).toFixed(1)+'%')},{passive:true});
+      card.addEventListener('pointerleave',()=>{card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');card.style.setProperty('--mx','50%');card.style.setProperty('--my','30%')});
+    });
+  }
   if('serviceWorker' in navigator&&location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();
