@@ -118,3 +118,30 @@ html[data-theme=light] .hero h1 span{background:linear-gradient(105deg,#765849 4
 .mosque,.hospital{background:#8b6f60}.halal,.bank,.uni{background:#d8c1af}
 @media(hover:hover){.feature-card:hover,.city-card:hover{border-color:rgba(216,193,175,.38)}.btn:hover,.share-btn:hover{border-color:rgba(216,193,175,.44)}}
 :focus-visible{outline-color:#a98572}
+
+/* ===== Milk Glass 3D · brighter, reactive, alive ===== */
+html[data-theme=light]{
+  --bg:#fbf8f3;--surface:rgba(255,255,255,.72);--surface2:rgba(239,230,220,.58);
+  --text:#352c27;--muted:#75675f;--line:rgba(105,80,67,.12);
+  --glass:rgba(255,253,249,.68);--glass-strong:rgba(255,253,249,.9);
+  --glass-edge:rgba(255,255,255,.98);--glass-shine:rgba(255,255,255,.92);
+  --shadow:0 22px 60px rgba(96,73,59,.11),0 5px 18px rgba(96,73,59,.07),inset 0 1px 0 #fff
+}
+html[data-theme=light] body{background:
+  radial-gradient(900px 640px at 82% -6%,rgba(225,207,192,.46),transparent 68%),
+  radial-gradient(720px 580px at -8% 35%,rgba(197,166,147,.12),transparent 72%),
+  radial-gradient(780px 640px at 102% 74%,rgba(255,255,255,.92),transparent 74%),#fbf8f3}
+body::after{content:"";position:fixed;inset:0;z-index:999;pointer-events:none;background:radial-gradient(420px circle at var(--cursor-x,50%) var(--cursor-y,30%),rgba(255,255,255,.18),transparent 68%);opacity:.8;mix-blend-mode:soft-light}
+.hero-grid{perspective:1300px}.hero::before{animation:orbDrift 11s ease-in-out infinite}.hero::after{animation:orbDrift 14s ease-in-out infinite reverse}
+.hero-panel,.tilt-card{--rx:0deg;--ry:0deg;--mx:50%;--my:30%;transform-style:preserve-3d;transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease,border-color .25s ease;will-change:transform}
+.hero-panel{animation:glassFloat 7s ease-in-out infinite;transform:perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry))}.hero-panel:hover{animation-play-state:paused;box-shadow:0 34px 90px rgba(89,66,53,.2),inset 0 1px 0 rgba(255,255,255,.88)}
+.hero-panel::after,.tilt-card::after{content:"";position:absolute;inset:0;z-index:4;border-radius:inherit;pointer-events:none;background:radial-gradient(320px circle at var(--mx) var(--my),rgba(255,255,255,.34),transparent 58%);opacity:0;transition:opacity .25s ease;mix-blend-mode:soft-light}.hero-panel:hover::after,.tilt-card:hover::after{opacity:1}
+.hero-panel .route-top,.hero-panel .route-card,.hero-panel .stats{position:relative;transform:translateZ(28px)}.hero-panel .route-card{transform:translateZ(42px);box-shadow:0 18px 34px rgba(89,66,53,.1),inset 0 1px 0 rgba(255,255,255,.72)}
+.tilt-card>*{position:relative;z-index:2}.tilt-card:hover{box-shadow:0 30px 70px rgba(89,66,53,.15),inset 0 1px 0 rgba(255,255,255,.9);border-color:rgba(169,133,114,.25)}
+.btn.primary{position:relative;overflow:hidden}.btn.primary::after{content:"";position:absolute;inset:-70% -30%;background:linear-gradient(110deg,transparent 36%,rgba(255,255,255,.35) 49%,transparent 62%);transform:translateX(-65%);animation:buttonShine 5.5s ease-in-out infinite}.btn.primary>*{position:relative;z-index:1}
+.header-inner{box-shadow:0 18px 45px rgba(89,66,53,.1),inset 0 1px 0 #fff}.feature-card,.panel,.city-card{isolation:isolate}
+@keyframes glassFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes orbDrift{0%,100%{translate:0 0;scale:1}50%{translate:-20px 16px;scale:1.06}}
+@keyframes buttonShine{0%,68%{transform:translateX(-72%)}88%,100%{transform:translateX(72%)}}
+@media(max-width:900px){.hero-panel,.tilt-card{transform:none!important}.hero-panel{animation:glassFloat 7s ease-in-out infinite}.hero-panel .route-top,.hero-panel .route-card,.hero-panel .stats{transform:none}}
+@media(prefers-reduced-motion:reduce){.hero::before,.hero::after,.hero-panel,.btn.primary::after{animation:none!important}.hero-panel,.tilt-card{transform:none!important;translate:0!important}}
