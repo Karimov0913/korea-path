@@ -1,9 +1,9 @@
 // Общая логика приложения: тема, навигация, поиск, чек-лист и UI.
 (() => {
   const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>[...root.querySelectorAll(s)];
-  const savedTheme=localStorage.getItem('kp-theme')||'dark'; document.documentElement.dataset.theme=savedTheme;
+  const savedTheme=localStorage.getItem('kp-theme-v3')||'light'; document.documentElement.dataset.theme=savedTheme;
   $('#themeToggle').textContent=savedTheme==='dark'?'☀️':'🌙';
-  $('#themeToggle').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('kp-theme',t);$('#themeToggle').textContent=t==='dark'?'☀️':'🌙'};
+  $('#themeToggle').onclick=()=>{const t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('kp-theme-v3',t);$('#themeToggle').textContent=t==='dark'?'☀️':'🌙'};
   $('#menuToggle').onclick=()=>$('#mainNav').classList.toggle('open');
   $$('#mainNav a').forEach(a=>a.onclick=()=>$('#mainNav').classList.remove('open'));
 
