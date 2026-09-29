@@ -6,6 +6,6 @@
   if(!window.L){ document.getElementById('map').innerHTML='<div class="map-fallback">Карта недоступна офлайн. Список проверенных ориентиров доступен ниже.</div>'; return; }
   const map=L.map('map',{scrollWheelZoom:false}).setView([36.5,127.8],7);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);
-  const colors={'Мечеть':'#ff6b00','Халяль':'#3aa76d','Больница':'#d84a4a','Банк':'#4d7cff','Университет':'#7d61d1','Общежитие':'#9a6b39'};
+  const colors={'Мечеть':'#ff6b6b','Халяль':'#5b8cff','Больница':'#ff6b6b','Банк':'#5b8cff','Университет':'#5b8cff','Общежитие':'#ff6b6b'};
   points.forEach(p=>L.circleMarker([p.lat,p.lng],{radius:8,color:'#fff',weight:2,fillColor:colors[p.c]||'#003478',fillOpacity:.95}).bindPopup(`<strong>${p.n}</strong><br>${p.c} · ${p.city}<br><small>${p.a}</small>`).addTo(map));
 })();
