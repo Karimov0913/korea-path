@@ -249,3 +249,21 @@ html[data-theme=dark] .ambient-blob{background:radial-gradient(circle at 30% 24%
 @keyframes blobMorph{0%{border-radius:43% 57% 62% 38%/45% 36% 64% 55%}50%{border-radius:64% 36% 44% 56%/56% 62% 38% 44%}100%{border-radius:38% 62% 55% 45%/64% 43% 57% 36%}}
 @media(max-width:620px){.ambient-blob{width:260px;opacity:.42}.blob-b{width:310px}.blob-c{width:220px}.blob-a{animation-duration:29s}.blob-b{animation-duration:36s}.blob-c{animation-duration:32s}}
 @media(prefers-reduced-motion:reduce){.ambient-blob{animation:none!important}.blob-a{transform:translate3d(12vw,18vh,0)}.blob-b{transform:translate3d(-18vw,12vh,0)}.blob-c{transform:translate3d(8vw,-32vh,0)}}
+
+/* ===== Mobile performance mode =====
+   На touch-устройствах оставляем внешний вид, но убираем дорогие repaint-эффекты. */
+@media (max-width:767px),(pointer:coarse){
+  html[data-theme=light] body{background:linear-gradient(145deg,#fff8f2 0%,#f7ddcd 48%,#fffaf6 100%)!important}
+  html[data-theme=dark] body{background:linear-gradient(145deg,#21120e 0%,#4a291e 52%,#2c1711 100%)!important}
+  #granim-bg,.ambient-float,body::after{display:none!important}
+  .hero::before,.hero::after,.hero-panel,.btn.primary::after{animation:none!important}
+  .hero::before,.hero::after{translate:0!important;scale:1!important}
+  .header-inner,.hero-panel,.feature-card,.panel,.filter-bar,.table-wrap,.city-card,.map-side,.faq article,footer,.back-to-top,nav{
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important
+  }
+  html[data-theme=light] .header-inner,html[data-theme=light] .hero-panel,html[data-theme=light] .feature-card,html[data-theme=light] .panel,html[data-theme=light] .filter-bar,html[data-theme=light] .table-wrap,html[data-theme=light] .city-card,html[data-theme=light] .map-side,html[data-theme=light] .faq article{background:rgba(255,251,247,.94)}
+  html[data-theme=dark] .header-inner,html[data-theme=dark] .hero-panel,html[data-theme=dark] .feature-card,html[data-theme=dark] .panel,html[data-theme=dark] .filter-bar,html[data-theme=dark] .table-wrap,html[data-theme=dark] .city-card,html[data-theme=dark] .map-side,html[data-theme=dark] .faq article{background:rgba(54,32,25,.95)}
+  .hero-panel,.tilt-card{transform:none!important;translate:0!important;will-change:auto!important}
+  .hero-panel::after,.tilt-card::after{display:none!important}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
