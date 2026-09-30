@@ -1,7 +1,8 @@
 // Живой градиентный фон на Granim.js. При недоступном CDN остаётся CSS-fallback.
 (() => {
   const canvas=document.getElementById('granim-bg');
-  if(!canvas||!window.Granim||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const mobileOrTouch=matchMedia('(max-width: 767px), (pointer: coarse)').matches;
+  if(!canvas||!window.Granim||mobileOrTouch||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   const granim=new Granim({
     element:'#granim-bg',
     name:'korea-path-background',
